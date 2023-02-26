@@ -3,7 +3,7 @@
         "browser": true,
         "es2021": true,
         "node": true,
-        "mocha": true
+        "jest": true
     },
     "extends": [
         "airbnb-base"
@@ -31,5 +31,5 @@
           }
       }
   },
-"ignorePatterns": ["./build/*"]
+"ignorePatterns": ["./build/*", "./jest.config.ts"]
 }
