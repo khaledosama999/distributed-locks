@@ -1,3 +1,9 @@
+#### 0.0.5 (2023-02-27)
+
+##### Chores
+
+* **deps:**  remove ioredis unsused dep (18cbeca9)
+
 #### 0.0.4 (2023-02-27)
 
 ##### Bug Fixes
