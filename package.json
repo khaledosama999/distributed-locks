@@ -1,6 +1,6 @@
 {
   "name": "distributed-locks",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A package for managing locks for critical sections while allowing horizontal scaling or micro-service architecture",
   "repository": {
     "url": ""
@@ -77,5 +77,11 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "keywords":["locks","race conditions", "mutux", "critical section", "micro services"]
+  "keywords": [
+    "locks",
+    "race conditions",
+    "mutux",
+    "critical section",
+    "micro services"
+  ]
 }
