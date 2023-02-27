@@ -76,5 +76,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "keywords":["locks","race conditions", "mutux", "critical section", "micro services"]
 }

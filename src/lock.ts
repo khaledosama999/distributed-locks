@@ -17,13 +17,13 @@ class Lock {
 
   private key: string;
 
-  private globalKey: string;
+  private value: string;
 
   constructor(key: string, machineId: string, storage: IStorage) {
     this.storage = storage;
     const uuid = randomUUID();
-    this.key = `${key}-${machineId}-${uuid}`;
-    this.globalKey = key;
+    this.key = key;
+    this.value = `${key}-${machineId}-${uuid}`;
   }
 
   /**
@@ -63,7 +63,7 @@ class Lock {
 
     if (currentRetry === retries) { reject(new FailedToObtainKey(this.key, lockOptions)); return; }
 
-    const obtainedLock = await this.storage.set(this.key, this.globalKey, { ttl });
+    const obtainedLock = await this.storage.set(this.key, this.value, { ttl });
     if (obtainedLock) { resolve(obtainedLock); return; }
 
     setTimeout(() => {
@@ -72,7 +72,7 @@ class Lock {
   }
 
   async unlock() {
-    return this.storage.unSet(this.key, this.globalKey);
+    return this.storage.unSet(this.key, this.value);
   }
 }
 

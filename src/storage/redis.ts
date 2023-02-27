@@ -28,30 +28,28 @@ export class RedisStorage implements IStorage {
       scripts: {
         setLock: defineScript({
           NUMBER_OF_KEYS: 1,
-          SCRIPT: `local check_global_key_exists = redis.call('GET', ARGV[1])
-          if (not check_global_key_exists)
+          SCRIPT: `local key = redis.call('GET', KEYS[1])
+          if (not key)
           then
-            redis.call('SET',ARGV[1], '1', 'NX', 'EX', ARGV[2])
-            redis.call('SET',KEYS[1], '1', 'NX', 'EX', ARGV[2])
+            redis.call('SET',KEYS[1], ARGV[1], 'NX', 'EX', ARGV[2])
             return 'OK'
           else
           return nil
           end
           `,
-          transformArguments: (key: string, globalKey:string, ttl: number) => [key, globalKey, `${ttl}`],
+          transformArguments: (key: string, value:string, ttl: number) => [key, value, `${ttl}`],
         }),
 
         deleteLock: defineScript({
           NUMBER_OF_KEYS: 1,
-          SCRIPT: `local check_local_key_exists = redis.call('GET', KEYS[1])
-          if (check_local_key_exists)
+          SCRIPT: `local key = redis.call('GET', KEYS[1])
+          if (key == ARGV[1])
           then
             redis.call('DEL', KEYS[1])
-            redis.call('DEL', ARGV[1])
           end
             return 'OK'
           `,
-          transformArguments: (key: string, globalKey:string) => [key, globalKey],
+          transformArguments: (key: string, value:string) => [key, value],
         }),
       },
     });
@@ -66,20 +64,18 @@ export class RedisStorage implements IStorage {
    * so the lock won't unlock until the operation is done
    * @returns
    */
-  async set(key: string, globalKey: string, options: StorageOptions): Promise<boolean> {
+  async set(key: string, value: string, options: StorageOptions): Promise<boolean> {
     const { ttl } = options;
     const redisKey = this.constructKey(key);
-    const redisGlobalKey = this.constructKey(globalKey);
 
-    const result = await this.client.setLock(redisKey, redisGlobalKey, ttl);
+    const result = await this.client.setLock(redisKey, value, ttl);
     return result === 'OK';
   }
 
-  async unSet(key: string, globalKey: string): Promise<boolean> {
+  async unSet(key: string, value: string): Promise<boolean> {
     const redisKey = this.constructKey(key);
-    const redisGlobalKey = this.constructKey(globalKey);
 
-    await this.client.deleteLock(redisKey, redisGlobalKey);
+    await this.client.deleteLock(redisKey, value);
 
     return true;
   }
