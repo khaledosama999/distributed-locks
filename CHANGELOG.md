@@ -1,3 +1,9 @@
+#### 0.0.4 (2023-02-27)
+
+##### Bug Fixes
+
+* **ci:**  publish action used wrong command with yarn (c23969e0)
+
 #### 0.0.3 (2023-02-27)
 
 ##### Continuous Integration
