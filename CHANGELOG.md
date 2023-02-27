@@ -1,3 +1,9 @@
+#### 0.0.2 (2023-02-27)
+
+##### Continuous Integration
+
+* **node version:**  update node version from 14 to 16 (fe6c26de)
+
 #### 0.0.1 (2023-02-27)
 
 ##### Documentation Changes
