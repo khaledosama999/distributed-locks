@@ -35,7 +35,8 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@redis/client": "^1.5.5"
+    "@redis/client": "^1.5.5",
+    "postgres": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",

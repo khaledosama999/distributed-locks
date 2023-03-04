@@ -20,6 +20,10 @@ class LockFactory {
     this.storage = storage;
   }
 
+  async init() {
+    await this.storage.init();
+  }
+
   createLock(key: string) {
     return new Lock(key, this.locksFactoryOptions.machineId ?? '1', this.storage);
   }

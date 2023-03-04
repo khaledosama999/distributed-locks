@@ -57,6 +57,10 @@ export class RedisStorage implements IStorage {
     this.client.connect();
   }
 
+  async init() {
+    return Promise.resolve();
+  }
+
   /**
    *
    * @param key
