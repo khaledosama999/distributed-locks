@@ -1,3 +1,9 @@
+#### 0.1.1 (2023-03-04)
+
+##### Documentation Changes
+
+* **readme:**  add postgres storage section (b70bc59e)
+
 ### 0.1.0 (2023-03-04)
 
 ##### New Features
