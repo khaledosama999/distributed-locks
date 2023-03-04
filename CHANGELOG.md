@@ -1,3 +1,9 @@
+### 0.1.0 (2023-03-04)
+
+##### New Features
+
+* **storage:**  add Postgresql as storage layer (48c9b98a)
+
 #### 0.0.5 (2023-02-27)
 
 ##### Chores
