@@ -1,3 +1,9 @@
+#### 0.1.2 (2023-03-04)
+
+##### Bug Fixes
+
+* **export:**  export the postgres storage class (ae32943e)
+
 #### 0.1.1 (2023-03-04)
 
 ##### Documentation Changes
