@@ -46,8 +46,33 @@ const storage = new RedisStorage({ keyPrefix:'my-locks', url: redisUrl });
 | arguments | type |required| default | description |
 | ------- | ---------- | ---------- | --------- | --------- |
 | arg0.keyPrefix | string | false | 'distributed-locks' | Prefix for all the keys used to make locks in redis, used to prevent conflicts with other keys |
-|  arg0.url | string | true | - | Redis connection url, should start with `redis://`
+|  arg0.url | string | true | - | Redis connection url, should start with `redis://` |
 
+### Postgresql storage
+```js
+  const storage = new PostgresqlStorage({
+      keyPrefix,
+      tableName: 'locks',
+      database: 'postgres',
+      host: container.getHost(),
+      port: container.getMappedPort(5432),
+      username: 'user',
+      password: 'password',
+    });
+```
+
+#### Constructor
+
+| arguments | type |required| default | description |
+| ------- | ---------- | ---------- | --------- | --------- |
+| arg0.keyPrefix | string | false | 'distributed-locks' | Prefix for all the keys used to make locks in redis, used to prevent conflicts with other keys |
+|  arg0.url | string | true | - | Redis connection url, should start with `redis://`|
+|  arg0.port | number | true | - | Port of the Postgresql server|
+|  arg0.host | string | true | - | Host of the Postgresql server|
+|  arg0.database | string | true | - | Name of the database|
+|  arg0.username | string | true | - | Username of the Postgresql server|
+|  arg0.password | string | true | - | Password of the username provided|
+|  arg0.tableName | string | false | locks | The table name that will be used to store locks states|
 
 ## Locks Factory
 
@@ -90,6 +115,8 @@ await lock.unlock();
 | arguments | type | required| default | description |
 | -------| ---------- | ---------- | ---------| --------- |
 
+## Tests
+To run tests locally you need a running docker host, as some tests spawn up docker containers
 
 ## Guarantees
 
@@ -100,3 +127,6 @@ await lock.unlock();
 ### Redis 
 
 Guarantees are done by applying the red-lock algorithm and lua scripts to provide atomicity of any operation
+
+### Postgres
+Guarantees are done by using `REPEATABLE READ ISOLATION` level for transactions to set/delete keys, the statement is a single insert statement with `ON CONFLICT` conditions updates the current row **only if it already expired** (checkout the [postgres storage file](./src/storage/postgres.ts)).
