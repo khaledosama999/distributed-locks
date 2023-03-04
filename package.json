@@ -1,6 +1,6 @@
 {
   "name": "distributed-locks",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A package for managing locks for critical sections while allowing horizontal scaling or micro-service architecture",
   "repository": {
     "url": ""
