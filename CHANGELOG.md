@@ -1,3 +1,13 @@
+### 0.2.0 (2023-03-08)
+
+##### New Features
+
+* **storage:**  add support for mongo db ([0e55d4fa](https://github.com/khaledosama999/distributed-locks/commit/0e55d4fabbcad1ea9ccb2e2b678ddf4eccbc617e))
+
+##### Bug Fixes
+
+* **package.json:**  add github url ([69f50b5c](https://github.com/khaledosama999/distributed-locks/commit/69f50b5cd4e5639edfbc7189ab7af61dc159ec58))
+
 #### 0.1.2 (2023-03-04)
 
 ##### Bug Fixes
