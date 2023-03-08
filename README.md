@@ -66,13 +66,24 @@ const storage = new RedisStorage({ keyPrefix:'my-locks', url: redisUrl });
 | arguments | type |required| default | description |
 | ------- | ---------- | ---------- | --------- | --------- |
 | arg0.keyPrefix | string | false | 'distributed-locks' | Prefix for all the keys used to make locks in redis, used to prevent conflicts with other keys |
-|  arg0.url | string | true | - | Redis connection url, should start with `redis://`|
 |  arg0.port | number | true | - | Port of the Postgresql server|
 |  arg0.host | string | true | - | Host of the Postgresql server|
 |  arg0.database | string | true | - | Name of the database|
 |  arg0.username | string | true | - | Username of the Postgresql server|
 |  arg0.password | string | true | - | Password of the username provided|
 |  arg0.tableName | string | false | locks | The table name that will be used to store locks states|
+
+### MongoDB storage
+```js
+const storage = new MongoStorage({ url: 'mongodb://.....', database: 'db', collectionName: 'locks'});
+```
+
+#### Constructor
+| arguments | type |required| default | description |
+| ------- | ---------- | ---------- | --------- | --------- |
+|  arg0.url | string | true | - | Redis connection url, should start with `redis://`|
+|  arg0.database | string | true | - | Name of the database|
+|  arg0.collectionName | string | false | locks | The collection name that will be used to store locks states|
 
 ## Locks Factory
 
@@ -125,8 +136,10 @@ To run tests locally you need a running docker host, as some tests spawn up dock
 - If the locks ttl expires and `unlock` was called on the lock, it won't unlock that section if it was already obtained by another lock 
 
 ### Redis 
-
 Guarantees are done by applying the red-lock algorithm and lua scripts to provide atomicity of any operation
 
 ### Postgres
-Guarantees are done by using `REPEATABLE READ ISOLATION` level for transactions to set/delete keys, the statement is a single insert statement with `ON CONFLICT` conditions updates the current row **only if it already expired** (checkout the [postgres storage file](./src/storage/postgres.ts)).
+Guarantees are done by using `REPEATABLE READ ISOLATION` level for transactions to set/delete keys, the statement is a single insert statement with `ON CONFLICT` with the key value condition, updates the current row **only if it already expired** (checkout the [postgres storage file](./src/storage/postgres.ts)).
+
+### MongoDB
+Using mongo default atomicity guarantees on single document, and unique index on the `_id` field

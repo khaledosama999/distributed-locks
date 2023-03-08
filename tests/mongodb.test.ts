@@ -11,7 +11,7 @@ describe('Locks factory Mongo', () => {
 
   beforeAll(async () => {
     mongodbServer = await MongoMemoryServer.create();
-    const storage = new MongoStorage({ url: mongodbServer.getUri(), dbName: 'db' });
+    const storage = new MongoStorage({ url: mongodbServer.getUri(), database: 'db' });
 
     locksFactory = new LockFactory(storage);
     await locksFactory.init();

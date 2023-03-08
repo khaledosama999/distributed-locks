@@ -18,21 +18,21 @@ export class MongoStorage implements IStorage {
 
   private collectionName: string;
 
-  private dbName: string;
+  private database: string;
 
   private db?: Db;
 
-  constructor(options: {url: string, dbName: string, collectionName?: string }) {
-    const { url, collectionName, dbName } = options;
+  constructor(options: {url: string, database: string, collectionName?: string }) {
+    const { url, collectionName, database } = options;
 
     this.client = new MongoClient(url);
     this.collectionName = collectionName ?? 'locks';
-    this.dbName = dbName;
+    this.database = database;
   }
 
   async init() {
     await this.client.connect();
-    this.db = this.client.db(this.dbName);
+    this.db = this.client.db(this.database);
   }
 
   /**
