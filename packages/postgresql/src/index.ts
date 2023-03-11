@@ -3,7 +3,7 @@
 /* eslint-disable import/prefer-default-export */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import postgres, { Sql } from 'postgres';
-import { IStorage, StorageOptions } from './IStorage';
+import { IStorage, StorageOptions } from 'distributed-locks-common';
 
 export class PostgresqlStorage implements IStorage {
   private keyPrefix: string;

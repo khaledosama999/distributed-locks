@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto';
-import { IStorage } from './storage';
+import { IStorage } from 'distributed-locks-common';
+
 import { FailedToObtainKey } from './errors';
 
 export const DEFAULT_TTL = 10;

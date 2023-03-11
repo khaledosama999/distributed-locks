@@ -4,7 +4,7 @@ import {
   Db,
   Document, MongoClient,
 } from 'mongodb';
-import { IStorage, StorageOptions } from './IStorage';
+import { IStorage, StorageOptions } from 'distributed-locks-common';
 
 interface MongoDocument extends Document {
   _id: string,

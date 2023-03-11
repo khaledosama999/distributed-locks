@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { RedisMemoryServer } from 'redis-memory-server';
-import LockFactory from '../src';
-import { FailedToObtainKey } from '../src/errors';
-import { RedisStorage } from '../src/storage';
+import LockFactory from '../packages/distributed-locks/src';
+import { FailedToObtainKey } from '../packages/distributed-locks/src/errors';
+import { RedisStorage } from '../packages/redis/src';
 import { pause } from './utils';
 
 describe('Locks factory REDIS', () => {

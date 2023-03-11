@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import LockFactory from '../src';
-import { FailedToObtainKey } from '../src/errors';
-import { MongoStorage } from '../src/storage';
+import { MongoStorage } from '../packages/mongodb/src';
+import LockFactory from '../packages/distributed-locks/src';
+import { FailedToObtainKey } from '../packages/distributed-locks/src/errors';
 import { pause } from './utils';
 
 describe('Locks factory Mongo', () => {

@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import redisClient, { createClient, defineScript } from '@redis/client';
 import { SHA1 } from '@redis/client/dist/lib/lua-script';
-import { IStorage, StorageOptions } from './IStorage';
+import { IStorage, StorageOptions } from 'distributed-locks-common';
 
 export class RedisStorage implements IStorage {
   private keyPrefix: string;

@@ -1,5 +1,5 @@
+import { IStorage } from 'distributed-locks-common';
 import Lock from './lock';
-import { IStorage } from './storage';
 
 export type LockFactoryOptions = {
   machineId?: string

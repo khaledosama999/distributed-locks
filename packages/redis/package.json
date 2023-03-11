@@ -1,11 +1,7 @@
 {
-  "name": "root",
-  "version": "0.2.0",
-  "private": true,
-  "description": "A package for managing locks for critical sections while allowing horizontal scaling or micro-service architecture",
-  "repository": {
-    "url": "https://github.com/khaledosama999/distributed-locks"
-  },
+  "name": "distributed-locks-redis",
+  "version": "1.0.0",
+  "description": "The redis package for the storage layer for distributed locks",
   "main": "./build/index.js",
   "module": "./build/index.js",
   "files": [
@@ -14,31 +10,15 @@
   "types": "./build/index.d.ts",
   "source": "./src/index.ts",
   "scripts": {
-    "test": "jest",
-    "build": "lerna run build",
-    "git-cz": "./node_modules/.bin/git-cz",
-    "husky": "husky init",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable",
-    "lint": "eslint",
+    "build:dev": "rm -rf build && cross-env NODE_ENV=development  rollup -c",
+    "build": "rm -rf build && cross-env NODE_ENV=production  rollup -c",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor",
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch"
   },
-  "author": "khaled osama <khaledosama52@gmail.com>",
-  "contributors": [
-    {
-      "name": "Khaled osama <khaledosama999>",
-      "email": "khaledosama52@gmail.com",
-      "url": "https://github.com/khaledosama999"
-    }
-  ],
-  "license": "ISC",
   "dependencies": {
     "@redis/client": "^1.5.5",
-    "mongodb": "^5.1.0",
-    "postgres": "^3.3.3"
+    "distributed-locks-common": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -71,25 +51,14 @@
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && npm run lint",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khaledosama999/distributed-locks.git"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "author": "khaled osama <khaledosama52@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khaledosama999/distributed-locks/issues"
   },
-  "keywords": [
-    "locks",
-    "race conditions",
-    "mutux",
-    "critical section",
-    "micro services"
-  ],
-  "workspaces": [
-    "packages/*"
-  ]
+  "homepage": "https://github.com/khaledosama999/distributed-locks#readme"
 }
