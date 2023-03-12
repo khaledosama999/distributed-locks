@@ -1,6 +1,6 @@
 {
   "name": "distributed-locks-common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common utils for all sub-packages for distributed-locks",
   "main": "./build/index.js",
   "module": "./build/index.js",
@@ -15,9 +15,6 @@
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor",
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch"
-  },
-  "dependencies": {
-    "distributed-locks-common": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
