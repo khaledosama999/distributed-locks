@@ -1,11 +1,12 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: yarn publish
+name: yarn publish mongodb
 
 on:
   push:
     branches: [ master ]
+    paths: ["packages/mongodb/**"]
 
 jobs:
   build:
@@ -23,6 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
+    - run: cd packages/mongodb
     - run: yarn install
     - run: yarn run build
     - id: publish

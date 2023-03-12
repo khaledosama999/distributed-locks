@@ -1,6 +1,6 @@
 {
   "name": "distributed-locks-postgresql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The postgresql package for the storage layer for distributed locks",
   "main": "./build/index.js",
   "module": "./build/index.js",
