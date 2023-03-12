@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: build
 
     runs-on: ubuntu-latest
 
@@ -24,14 +25,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
-    - run: yarn install -g lerna
+    - run: yarn global add lerna
     - run: yarn install
-    - run: cd packages/common
-    - run: yarn run build
+    - run: cd ./packages/common && yarn run build
     - id: publish
       uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN}}
+        package: ./packages/common/package.json
     - if: steps.publish.outputs.type != 'none'
       run: |
         echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"

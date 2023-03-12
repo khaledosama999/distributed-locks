@@ -1,6 +1,6 @@
 {
   "name": "distributed-locks-common",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Common utils for all sub-packages for distributed-locks",
   "main": "./build/index.js",
   "module": "./build/index.js",
