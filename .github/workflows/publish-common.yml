@@ -24,8 +24,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     
-    - run: cd packages/common
+    - run: yarn install -g lerna
     - run: yarn install
+    - run: cd packages/common
     - run: yarn run build
     - id: publish
       uses: JS-DevTools/npm-publish@v1
