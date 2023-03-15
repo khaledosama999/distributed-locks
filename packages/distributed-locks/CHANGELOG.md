@@ -1,3 +1,25 @@
+#### 1.0.4 (2023-03-15)
+
+##### Continuous Integration
+
+* **publish:**  add a publish CI/CD to each package ([6707923c](https://github.com/khaledosama999/distributed-locks/commit/6707923c4880db8c568759d9de383b733fbae595))
+
+##### Documentation Changes
+
+* **readme:**  update to include links to storage packages ([012c40dc](https://github.com/khaledosama999/distributed-locks/commit/012c40dc41c27a647aa6687d85291c1196377ce5))
+* **mongo storage:**  add docs for mongo storage class ([1a2df8f6](https://github.com/khaledosama999/distributed-locks/commit/1a2df8f6b895c277f2b3690a8aac0937d1ee667f))
+
+##### Bug Fixes
+
+* **publish for all packages:**  fix the publish pipeline of all packages to match common ([f04372d5](https://github.com/khaledosama999/distributed-locks/commit/f04372d53380b5ce6355202b0a30f8e166257534))
+* **common publish:**  fix common publish pipeline ([5122a3a9](https://github.com/khaledosama999/distributed-locks/commit/5122a3a99c8a74a6c1b2f09634c2612584c525d5))
+* **publish:**  fix publish pipeline for the common package ([eb753b7f](https://github.com/khaledosama999/distributed-locks/commit/eb753b7f17029e843bfed07a09f80ec65d965bb7))
+* **deps:**  fix common package deps ([cdbbc1ef](https://github.com/khaledosama999/distributed-locks/commit/cdbbc1efde18a6352da489572c12f403878ecca6))
+
+##### Refactors
+
+* **packages:**  split up package into smaller packages ([e331cb38](https://github.com/khaledosama999/distributed-locks/commit/e331cb388077cda3e5a6a2e9fc6fa05e4dc25cba))
+
 ## 2.0.0 (2023-03-11)
 
 ##### Documentation Changes
