@@ -59,5 +59,12 @@
   "bugs": {
     "url": "https://github.com/khaledosama999/distributed-locks/issues"
   },
-  "homepage": "https://github.com/khaledosama999/distributed-locks#readme"
+  "homepage": "https://github.com/khaledosama999/distributed-locks#readme",
+  "keywords": [
+    "locks",
+    "race conditions",
+    "mutux",
+    "critical section",
+    "micro services"
+  ]
 }
