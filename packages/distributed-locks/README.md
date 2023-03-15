@@ -5,10 +5,19 @@ A package for managing locks for critical section in a micro-service/horizontal 
 
 Most packages for managing access to critical sections assume **a single machine deployment** scenario (locks are local to the process running not across multiple process/machines), given todays standards that's very unlikely, for availability we might have replicas of the same app up and running but we still need **a centralized** way of managing lock across those replicas
 
+## Available Storage Layers
+| Storage | Link |
+| -------- | ------- |
+| Redis | [distributed-locks-redis](https://www.npmjs.com/package/distributed-locks-redis)|
+| Postgresql | [distributed-locks-postgresql](https://www.npmjs.com/package/distributed-locks-postgresql)|
+| Mongodb | [distributed-locks-mongodb](https://www.npmjs.com/package/distributed-locks-mongodb)|
+
+
 ## Usage
 
 ```js
-import LocksFactory, {RedisStorage, FailedToObtainKey} from 'distributed-locks'
+import LocksFactory, {FailedToObtainKey} from 'distributed-locks'
+import {RedisStorage} from 'distributed-locks-redis'
 
 const storage = new RedisStorage({ keyPrefix:'my-locks', url: redisUrl });
 const locksFactory = new LockFactory(storage);
